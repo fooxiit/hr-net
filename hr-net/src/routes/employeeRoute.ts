@@ -3,7 +3,7 @@ import PATH from './PATH';
 import { getEmployees } from '../services/employeesService';
 
 const employeeRoute: RouteObject = {
-    path: PATH.EMPLOYEE,
+    path: PATH.EMPLOYEE.PATH,
     loader: loader,
 };
 

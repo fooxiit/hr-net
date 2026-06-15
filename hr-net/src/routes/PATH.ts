@@ -1,6 +1,6 @@
 const PATH = {
-    HOME: '/',
-    EMPLOYEE: '/employee',
+    HOME: { PATH: '/', LABEL: 'Home' },
+    EMPLOYEE: { PATH: '/employee', LABEL: 'View Curent Employee' },
 } as const;
 
 export default PATH;
