@@ -1,7 +1,7 @@
 import type { Result } from './resultType';
 import URL from './URL';
 
-interface Employee {
+export interface Employee {
     firstName: string;
     lastName: string;
     startDate: Date;
@@ -14,7 +14,7 @@ interface Employee {
     id: string;
 }
 
-type NewEmployee = Omit<Employee, 'id'>;
+export type NewEmployee = Omit<Employee, 'id'>;
 
 export async function getEmployees(): Promise<Result<Employee>> {
     try {
@@ -30,7 +30,12 @@ export async function getEmployees(): Promise<Result<Employee>> {
 
 export async function saveEmployee(newEmployee: NewEmployee): Promise<Result<string>> {
     try {
-        const postResponse = await fetch(`${URL.HOST}${URL.ENDPOINT.EMPLOYEE}`, { method: 'post', body: JSON.stringify(newEmployee) });
+        const headers = new Headers();
+        const request: RequestInit = { headers };
+        request.method = 'post';
+        headers.append('Content-Type', 'application/json');
+        request.body = JSON.stringify({ employee: newEmployee });
+        const postResponse = await fetch(`${URL.HOST}${URL.ENDPOINT.EMPLOYEE}`, request);
         if (!postResponse.ok) return { success: false, raison: postResponse.status.toString() };
         return { success: true, data: 'employee was created' };
     } catch (error) {
