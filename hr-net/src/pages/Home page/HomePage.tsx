@@ -2,22 +2,15 @@ import { useLoaderData } from 'react-router';
 import type { Department } from '../../services/department';
 import STRING from './STRING';
 import NewEmployeeFrom from '../../components/NewEmployeeFrom';
-import NavBar from '../../components/NavBar';
+
+import ModalProvider from '../../components/Modal/Modal';
 
 export default function HomePage() {
     const departments = useLoaderData<Department[]>();
     return (
-        <div>
-            <header>
-                <span>{STRING.LOGO}</span>
-                <h1>{STRING.TITLE}</h1>
-            </header>
-            <main>
-                <NavBar />
-                <section className="main-content">
-                    <NewEmployeeFrom departments={departments} />
-                </section>
-            </main>
-        </div>
+        <ModalProvider initialContent={<div>{STRING.MODAL.CONTENT}</div>}>
+            <ModalProvider.Modal />
+            <NewEmployeeFrom departments={departments} />
+        </ModalProvider>
     );
 }

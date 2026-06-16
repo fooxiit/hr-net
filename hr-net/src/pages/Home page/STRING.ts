@@ -1,5 +1,4 @@
 const STRING = {
-    LOGO: 'HRnet',
     TITLE: 'Home page',
     BUTTON: {
         VIEW_EMPLOYEE: 'View Curent Employee',
@@ -22,6 +21,9 @@ const STRING = {
             STATE: 'State',
             ZIP_CODE: 'Zip Code',
         },
+    },
+    MODAL: {
+        CONTENT: 'Employee Created!',
     },
 } as const;
 
