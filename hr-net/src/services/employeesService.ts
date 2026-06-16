@@ -1,18 +1,18 @@
 import type { Result } from './resultType';
 import URL from './URL';
 
-export interface Employee {
+export type Employee = {
     firstName: string;
     lastName: string;
-    startDate: Date;
+    startDate: string;
     department: string;
-    dateOfBirth: Date;
+    dateOfBirth: string;
     street: string;
     city: string;
     state: string;
     zipCode: string;
     id: string;
-}
+};
 
 export type NewEmployee = Omit<Employee, 'id'>;
 
