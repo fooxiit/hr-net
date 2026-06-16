@@ -4,12 +4,14 @@ import STRING from '../pages/Home page/STRING';
 import type { Department } from '../services/department';
 import { saveEmployee, type NewEmployee } from '../services/employeesService';
 import type React from 'react';
+import useModalContext from '../hook/useModalContext';
 
 type NewEmployeeFormProps = PropsWithChildren & {
     departments: Department[];
 };
 
 export default function NewEmployeeFrom({ departments }: NewEmployeeFormProps) {
+    const { open } = useModalContext();
     const [isValid, setIsValid] = useState({ valid: true, error: new Map() });
     async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -19,6 +21,7 @@ export default function NewEmployeeFrom({ departments }: NewEmployeeFormProps) {
             const postNewEmployeeResult = saveEmployee(newEmployee);
             if ((await postNewEmployeeResult).success) {
                 setIsValid({ valid: true, error: new Map() });
+                open();
                 return e.target.reset();
             }
             setIsValid({ valid: false, error: new Map([['network', true]]) });
@@ -88,7 +91,7 @@ export default function NewEmployeeFrom({ departments }: NewEmployeeFormProps) {
             </div>
             <div className="form__field">
                 <label htmlFor="department">{STRING.FORM.DEPARTMENT}</label>
-                <select name="state" id="state">
+                <select name="department" id="state">
                     <option value="">-</option>
                     {departments.map((department) => (
                         <option value={department.value} key={department.id}>
