@@ -1,4 +1,5 @@
 import STRING from './STRING';
+import './header.css';
 type HeaderProps = {
     pageTitle: string;
 };

@@ -1,4 +1,5 @@
 import { useState, type PropsWithChildren } from 'react';
+import './NewEmployeeForm.css';
 import { USA_STATE } from '../constant/USA_STATE';
 import STRING from '../pages/Home page/STRING';
 import type { Department } from '../services/department';

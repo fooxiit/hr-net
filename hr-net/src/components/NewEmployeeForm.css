@@ -1,0 +1,124 @@
+.form {
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: 2rem 2.5rem;
+    max-width: 700px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.375rem;
+}
+
+.form__field label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.form__field input,
+.form__field select {
+    height: 42px;
+    padding: 0 0.875rem;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 0.9375rem;
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background: var(--color-surface);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    outline: none;
+    width: 100%;
+    appearance: none;
+}
+
+.form__field select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2364748B' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.875rem center;
+    padding-right: 2.25rem;
+}
+
+.form__field input:focus,
+.form__field select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+.form__field input::placeholder {
+    color: #CBD5E1;
+}
+
+.form__field span {
+    font-size: 0.75rem;
+    color: var(--color-error);
+    font-weight: 500;
+}
+
+.from__group-field {
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem 1.25rem 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    position: relative;
+}
+
+.from__group-field::before {
+    content: 'Adresse';
+    position: absolute;
+    top: -0.6rem;
+    left: 1rem;
+    background: var(--color-surface);
+    padding: 0 0.375rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.form button[type='submit'] {
+    align-self: flex-end;
+    padding: 0.65rem 2rem;
+    background: var(--color-primary);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 0.9375rem;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.35);
+    margin-top: 0.5rem;
+}
+
+.form button[type='submit']:hover {
+    background: var(--color-primary-hover);
+    box-shadow: 0 4px 14px rgba(79, 70, 229, 0.45);
+    transform: translateY(-1px);
+}
+
+.form button[type='submit']:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+}
+
+.form > span {
+    font-size: 0.875rem;
+    color: var(--color-error);
+    background: var(--color-error-bg);
+    padding: 0.625rem 0.875rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid #FECACA;
+}

@@ -1,0 +1,24 @@
+.content-warper {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.side-content {
+    width: 220px;
+    flex-shrink: 0;
+    background: var(--color-sidebar);
+    overflow-y: auto;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    overflow-y: auto;
+    background: var(--color-bg);
+    padding: 2rem 2.5rem;
+}

@@ -1,4 +1,5 @@
 import React, { useState, type PropsWithChildren } from 'react';
+import './Modal.css';
 import ModalContext from './ModalContext';
 import useModalContext from '../../hook/useModalContext';
 
@@ -30,9 +31,18 @@ function Modal() {
     const { isOpen, close, Content } = useModalContext();
     if (isOpen)
         return (
-            <div className="modal__container">
-                <div onClick={close}>X</div>
-                <div className="modal___content">{Content}</div>
+            <div onClick={close} className="modal__container">
+                <button className="modal__close-btn" onClick={close}>
+                    X
+                </button>
+                <div
+                    onClick={(e) => {
+                        e.stopPropagation();
+                    }}
+                    className="modal___content"
+                >
+                    {Content}
+                </div>
             </div>
         );
 }
