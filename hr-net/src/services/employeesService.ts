@@ -1,5 +1,6 @@
 import type { Result } from './resultType';
 import URL from './URL';
+// Service permettent la manipulation des données employés
 
 export type Employee = {
     firstName: string;
@@ -14,8 +15,9 @@ export type Employee = {
     id: string;
 };
 
+// NewEmployee est un Employee sans l'identifiant assigné par le serveur
 export type NewEmployee = Omit<Employee, 'id'>;
-
+// Récupère la liste des employés depuis l'API
 export async function getEmployees(): Promise<Result<Employee>> {
     try {
         const fetchResponse = await fetch(`${URL.HOST}${URL.ENDPOINT.EMPLOYEE}`);
@@ -28,6 +30,7 @@ export async function getEmployees(): Promise<Result<Employee>> {
     }
 }
 
+// Sauvegarde la liste des employés depuis l'API
 export async function saveEmployee(newEmployee: NewEmployee): Promise<Result<string>> {
     try {
         const headers = new Headers();

@@ -2,7 +2,7 @@ import { useState, type PropsWithChildren } from 'react';
 import './NewEmployeeForm.css';
 import { USA_STATE } from '../constant/USA_STATE';
 import STRING from '../pages/Home page/STRING';
-import type { Department } from '../services/department';
+import type { Department } from '../services/departmentService';
 import { saveEmployee, type NewEmployee } from '../services/employeesService';
 import type React from 'react';
 import useModalContext from '../hook/useModalContext';
@@ -13,6 +13,7 @@ type NewEmployeeFormProps = PropsWithChildren & {
 
 export default function NewEmployeeFrom({ departments }: NewEmployeeFormProps) {
     const { open } = useModalContext();
+    // valid : formulaire valide ou non ; error : Map des champs invalides
     const [isValid, setIsValid] = useState({ valid: true, error: new Map() });
     async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -108,6 +109,7 @@ export default function NewEmployeeFrom({ departments }: NewEmployeeFormProps) {
     );
 }
 
+// Convertit les données brutes du formulaire en objet NewEmployee typé
 function employeeAdapter(formEmployee: HTMLFormElement) {
     const form = new FormData(formEmployee);
     const newEmployee = Object.fromEntries(form.entries());
@@ -115,6 +117,7 @@ function employeeAdapter(formEmployee: HTMLFormElement) {
     return newEmployee as unknown as NewEmployee;
 }
 
+// Vérifie que tous les champs obligatoires sont renseignés et retourne les champs invalides
 function validateForm(newEmployee: NewEmployee) {
     let isValid = { valid: true, error: new Map() };
     if (newEmployee.city === '') isValid = { ...isValid, valid: false, error: isValid.error.set('city', true) };

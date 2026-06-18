@@ -8,6 +8,7 @@ import './AppLayout.css';
 
 export default function AppLayout() {
     const { pathname } = useLocation();
+    // Détermine le titre de la page en fonction de la route active
     const title = useMemo(() => {
         switch (pathname as Path) {
             case '/':

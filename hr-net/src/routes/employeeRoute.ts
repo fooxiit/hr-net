@@ -9,6 +9,7 @@ const employeeRoute: RouteObject = {
     Component: EmployeePage,
 };
 
+// Charge la liste des employés avant l'affichage de la page ; retourne un tableau vide en cas d'échec API
 async function loader() {
     const employeeResult = await getEmployees();
     if (employeeResult.success) return employeeResult.data;

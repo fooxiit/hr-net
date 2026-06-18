@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router';
-import type { Department } from '../../services/department';
+import type { Department } from '../../services/departmentService';
 import STRING from './STRING';
 import NewEmployeeFrom from '../../components/NewEmployeeFrom';
 

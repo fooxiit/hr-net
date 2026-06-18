@@ -7,6 +7,7 @@ type ModalProps = PropsWithChildren & {
     initialContent?: React.ReactNode;
 };
 
+// ModalProvider gère l'état ouvert/fermé et expose Modal comme composant imbriqué via ModalProvider.Modal
 export default function ModalProvider({ children, initialContent = <></> }: ModalProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [Content, setContent] = useState<React.ReactNode>(initialContent);

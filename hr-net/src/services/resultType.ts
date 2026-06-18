@@ -15,4 +15,5 @@ type Loading<D> = {
     data?: D;
 };
 
+// Union discriminée représentant les trois états possibles d'un appel API
 export type Result<D> = Fail | Success<D> | Loading<D>;
