@@ -10,6 +10,7 @@ export default function EmployeePage() {
     return (
         <div className="employee-tab-data__warper">
             <TabData
+                search={{ label: 'Search: ' }}
                 id="employee-tab-data"
                 datas={employees}
                 maxRow={10}
