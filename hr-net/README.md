@@ -21,13 +21,13 @@ La migration jQuery → React impliquait également de remplacer les plugins jQu
 
 ## Stack technique
 
-| Technologie       | Version  | Rôle                          |
-|-------------------|----------|-------------------------------|
-| React             | 19       | UI                            |
-| TypeScript        | 6        | Typage statique               |
-| React Router      | 7        | Routage client                |
-| Vite              | 8        | Bundler / serveur de dev      |
-| @fooxit/tab-data  | 1.1.1    | Composant tableau (npm custom)|
+| Technologie      | Version | Rôle                           |
+| ---------------- | ------- | ------------------------------ |
+| React            | 19      | UI                             |
+| TypeScript       | 6       | Typage statique                |
+| React Router     | 7       | Routage client                 |
+| Vite             | 8       | Bundler / serveur de dev       |
+| @fooxit/tab-data | 1.1.1   | Composant tableau (npm custom) |
 
 ---
 
@@ -35,6 +35,7 @@ La migration jQuery → React impliquait également de remplacer les plugins jQu
 
 - [Node.js](https://nodejs.org/) v18 ou supérieur
 - Un serveur back-end HRnet actif sur `http://localhost:3000` (endpoints `/employee` et `/department`)
+  → Dépôt back-end : [https://github.com/fooxiit/hr-net-back](https://github.com/fooxiit/hr-net-back)
 
 ---
 
@@ -97,10 +98,10 @@ src/
 
 Le front-end consomme une API REST locale :
 
-| Méthode | Endpoint      | Description                    |
-|---------|---------------|--------------------------------|
-| GET     | `/employee`   | Récupère la liste des employés |
-| POST    | `/employee`   | Crée un nouvel employé         |
+| Méthode | Endpoint      | Description                        |
+| ------- | ------------- | ---------------------------------- |
+| GET     | `/employee`   | Récupère la liste des employés     |
+| POST    | `/employee`   | Crée un nouvel employé             |
 | GET     | `/department` | Récupère la liste des départements |
 
 L'URL de base est configurable dans [src/services/URL.ts](src/services/URL.ts).
