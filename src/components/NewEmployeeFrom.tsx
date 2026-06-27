@@ -3,15 +3,18 @@ import './NewEmployeeForm.css';
 import { USA_STATE } from '../constant/USA_STATE';
 import STRING from '../pages/Home page/STRING';
 import type { Department } from '../services/departmentService';
-import { saveEmployee, type NewEmployee } from '../services/employeesService';
+import { type NewEmployee } from '../services/employeesService';
 import type React from 'react';
 import useModalContext from '../hook/useModalContext';
+import { useAppDispatch } from '../hook/useRedux';
+import { save } from '../store/employeeStore';
 
 type NewEmployeeFormProps = PropsWithChildren & {
     departments: Department[];
 };
 
 export default function NewEmployeeFrom({ departments }: NewEmployeeFormProps) {
+    const appDispatch = useAppDispatch();
     const { open } = useModalContext();
     // valid : formulaire valide ou non ; error : Map des champs invalides
     const [isValid, setIsValid] = useState({ valid: true, error: new Map() });
@@ -20,13 +23,10 @@ export default function NewEmployeeFrom({ departments }: NewEmployeeFormProps) {
         const newEmployee = employeeAdapter(e.target);
         const formIsValid = validateForm(newEmployee);
         if (formIsValid.valid) {
-            const postNewEmployeeResult = saveEmployee(newEmployee);
-            if ((await postNewEmployeeResult).success) {
-                setIsValid({ valid: true, error: new Map() });
-                open();
-                return e.target.reset();
-            }
-            setIsValid({ valid: false, error: new Map([['network', true]]) });
+            appDispatch(save(newEmployee));
+            setIsValid({ valid: true, error: new Map() });
+            open();
+            return e.target.reset();
         } else {
             setIsValid(formIsValid);
         }
